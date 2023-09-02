@@ -1,6 +1,7 @@
 package com.vacance.agreement.api.group;
 
 import com.vacance.agreement.api.group.dto.request.CreateGroupRequest;
+import com.vacance.agreement.api.group.dto.request.IntoGroupRequest;
 import com.vacance.agreement.api.group.dto.response.GroupIdResponse;
 import com.vacance.agreement.api.group.service.GroupService;
 import com.vacance.agreement.common.response.ApiResponse;
@@ -23,5 +24,12 @@ public class GroupController {
         GroupIdResponse group = groupService.createGroup(createGroupRequest);
 
         return new ResponseEntity<>(ApiResponse.ok(ResponseCode.CREATED, group), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/group/{groupId}")
+    public ResponseEntity<?> checkPw(@PathVariable Long groupId, IntoGroupRequest intoGroupRequest) {
+        groupService.checkPw(groupId, intoGroupRequest);
+
+        return new ResponseEntity<>(ApiResponse.ok(ResponseCode.SUCCESS, null), HttpStatus.OK);
     }
 }
