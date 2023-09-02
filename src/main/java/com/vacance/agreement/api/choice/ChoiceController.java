@@ -22,7 +22,7 @@ public class ChoiceController {
     private final ChoiceService choiceService;
 
     // 멤버별 문항 선택 저장
-    @PostMapping("/date")
+    @PostMapping("/choice")
     public ApiResponse<Map<String, Object>> createChoice(@RequestBody ChoiceCreateRequestDto request) {
         choiceService.createChoice(request);
         return ApiResponse.ok(ResponseCode.CREATED, Map.of("memberId", request.getMemberId()));
