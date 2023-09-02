@@ -2,16 +2,16 @@ package com.vacance.agreement.api.choice;
 
 
 import com.vacance.agreement.api.choice.dto.ChoiceCreateRequestDto;
+import com.vacance.agreement.api.choice.dto.GroupChoiceResponse;
 import com.vacance.agreement.api.choice.service.ChoiceService;
 import com.vacance.agreement.common.response.ApiResponse;
 import com.vacance.agreement.common.response.ResponseCode;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -28,4 +28,10 @@ public class ChoiceController {
         return ApiResponse.ok(ResponseCode.CREATED, Map.of("memberId", request.getMemberId()));
     }
 
+    @GetMapping("/choice/{groupId}")
+    public ResponseEntity<?> getTotalChoiceByGroup(@PathVariable long groupId) {
+        GroupChoiceResponse groupChoice = choiceService.getGroupChoice(groupId);
+
+        return new ResponseEntity<>(ApiResponse.ok(ResponseCode.SUCCESS, groupChoice), HttpStatus.OK);
+    }
 }
