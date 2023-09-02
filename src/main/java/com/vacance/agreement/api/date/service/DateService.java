@@ -8,7 +8,6 @@ import com.vacance.agreement.api.date.model.Date;
 import com.vacance.agreement.api.group.model.Group;
 import com.vacance.agreement.api.group.service.GroupService;
 import com.vacance.agreement.api.member.model.Member;
-import com.vacance.agreement.api.member.service.MemberService;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 public class DateService {
 
 	private final DateRepository dateRepository;
-	private final MemberService memberService;
 	private final GroupService groupService;
 
 	public void createDate(DateCreateRequestDto request) {
