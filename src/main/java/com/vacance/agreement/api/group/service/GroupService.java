@@ -30,8 +30,13 @@ public class GroupService {
         group.checkPw(intoGroupRequest.getPw());
     }
 
-    private Group getGroup(Long groupId) {
+    public Group getGroup(Long groupId) {
         return groupRepository.findById(groupId)
+                .orElseThrow(() -> new CustomException(ResponseCode.GROUP_NOT_FOUND));
+    }
+
+    public Group getGroupWithMembers(Long groupId) {
+        return groupRepository.findByIdWithMember(groupId)
                 .orElseThrow(() -> new CustomException(ResponseCode.GROUP_NOT_FOUND));
     }
 }
