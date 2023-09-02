@@ -13,7 +13,6 @@ import java.util.List;
 @DynamicInsert
 @DynamicUpdate
 @Entity
-@Builder
 public class Group {
 
     @Id
@@ -28,4 +27,10 @@ public class Group {
 
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private List<Member> memberList;
+
+    @Builder
+    private Group(String pw, String title) {
+        this.pw = pw;
+        this.title = title;
+    }
 }
