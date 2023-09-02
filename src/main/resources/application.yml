@@ -3,10 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/vacation;
-    username: vacation
-    password: vacation
-    driver-class-name: org.h2.Driver
+    url: jdbc:postgresql://52.78.130.4:5432/vacance
+    username: vacance
+    password: vacance
 
   jpa:
     hibernate:
