@@ -6,8 +6,8 @@ import com.vacance.agreement.api.date.dto.DateResponseDto;
 import com.vacance.agreement.api.date.dto.DatesResponseDto;
 import com.vacance.agreement.api.date.model.Date;
 import com.vacance.agreement.api.group.model.Group;
+import com.vacance.agreement.api.group.service.GroupService;
 import com.vacance.agreement.api.member.model.Member;
-import com.vacance.agreement.api.member.service.MemberService;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class DateService {
 
 	private final DateRepository dateRepository;
-	private final MemberService memberService;
+	private final GroupService groupService;
 
 	public void createDate(DateCreateRequestDto request) {
 		for(String selectedDate : request.getSelectedDates()) {
@@ -32,10 +32,10 @@ public class DateService {
 	}
 
 	public DatesResponseDto findDates(Long groupId) {
-		List<Member> members = memberService.findMemberByGroupId(groupId);
+		Group group = groupService.getGroup(groupId);
 		List<DateResponseDto> response = new ArrayList<>();
 
-		for (Member member : members) {
+		for (Member member : group.getMemberList()) {
 			List<String> dates = dateRepository.findDatesByMemberId(member.getId());
 			response.add(DateResponseDto.builder()
 				.memberId(member.getId())
