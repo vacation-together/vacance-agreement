@@ -13,6 +13,7 @@ import java.util.List;
 @DynamicInsert
 @DynamicUpdate
 @Entity
+@Table(name = "GROUPS")
 public class Group {
 
     @Id
