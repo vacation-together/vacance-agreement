@@ -5,7 +5,9 @@ import com.vacance.agreement.api.group.dto.request.CreateGroupRequest;
 import com.vacance.agreement.api.group.dto.response.GroupIdResponse;
 import com.vacance.agreement.api.group.model.Group;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class GroupService {
 
