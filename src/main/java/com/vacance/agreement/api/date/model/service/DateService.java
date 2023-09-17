@@ -1,4 +1,4 @@
-package com.vacance.agreement.api.date.service;
+package com.vacance.agreement.api.date.model.service;
 
 import com.vacance.agreement.api.date.data.DateRepository;
 import com.vacance.agreement.api.date.dto.DateCreateRequestDto;

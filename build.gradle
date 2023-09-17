@@ -28,6 +28,9 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.6.0'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+    // swagger UI
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
     // QueryDSL
     implementation "com.querydsl:querydsl-jpa:5.0.0"
     annotationProcessor(
